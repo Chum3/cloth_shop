@@ -12,18 +12,28 @@ use AlibabaCloud\Client\AlibabaCloud;
 use AlibabaCloud\Client\Exception\ClientException;
 use AlibabaCloud\Client\Exception\ServerException;
 
+
 class AliSms {
     //todo 可以放在middleware中
+    /**
+     * 阿里云发送短信验证码的场景
+     * @param string $phone
+     * @param int $code
+     * @return bool
+     * @throws ClientException
+     */
     public static function sendCode(string $phone, int $code): bool {
         if(empty($phone) || empty($code)) {
             return false;
         }
 
-        // Ali的开发文档提供的代码
-        AlibabaCloud::accessKeyClient('<accessKeyId>', '<accessSecret>')
-            ->regionId('cn-hangzhou')
+        AlibabaCloud::accessKeyClient(config("aliyun.access_key_id"), config("aliyun.access_key_secret"))
+            ->regionId(config("aliyun.region_id"))
             ->asDefaultClient();
 
+        $templateParam = [
+            'code' => $code,
+        ];
         try {
             $result = AlibabaCloud::rpc()
                 ->product('Dysmsapi')
@@ -31,18 +41,27 @@ class AliSms {
                 ->version('2017-05-25')
                 ->action('SendSms')
                 ->method('POST')
-                ->host('dysmsapi.aliyuncs.com')
+                ->host(config("aliyun.host"))
                 ->options([
                     'query' => [
-                        'RegionId' => "cn-hangzhou",
+                        'RegionId' => config("aliyun.region_id"),
+                        'PhoneNumbers' => $phone,
+                        'SignName' => config("aliyun.sign_name"),
+                        'TemplateCode' =>  config("aliyun.template_code"),
+                        'TemplateParam' => json_encode($templateParam),
                     ],
                 ])
                 ->request();
             print_r($result->toArray());
         } catch (ClientException $e) {
-            echo $e->getErrorMessage() . PHP_EOL;
+            return false;
+            // echo $e->getErrorMessage() . PHP_EOL;
         } catch (ServerException $e) {
-            echo $e->getErrorMessage() . PHP_EOL;
+            return false;
+            // echo $e->getErrorMessage() . PHP_EOL;
         }
+
+        return true;
     }
+
 }
