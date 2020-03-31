@@ -7,7 +7,7 @@
  * Time: 23:20
  */
 declare(strict_types=1);
-namespace app\common\lib;
+namespace app\common\lib\sms;
 
 class Num {
     /**

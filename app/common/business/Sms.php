@@ -8,12 +8,13 @@
 declare(strict_types=1);
 namespace app\common\business;
 use app\common\lib\sms\AliSms;
-use app\common\lib\Num;
+use app\common\lib\sms\Num;
 class Sms {
     public static function sendCode(string $phoneNumber, int $len) :bool {
 
         $code = Num::getCode($len);
         $sms = AliSms::sendCode($phoneNumber,$code);
+        //$sms = 1;
         if($sms) {
             // todo 把短信验证码记录到redis，并且给出一个失效时间 1min有效
             cache(config("redis.code_pre").$phoneNumber,$code,config("redis.code_expire"));
