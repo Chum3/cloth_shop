@@ -7,11 +7,12 @@
  */
 declare(strict_types=1);
 namespace app\common\business;
-use app\commom\lib\sms\AliSms;
+use app\common\lib\sms\AliSms;
+use app\common\lib\Num;
 class Sms {
-    public static function sendCode(string $phoneNumber) :bool {
+    public static function sendCode(string $phoneNumber, int $len) :bool {
 
-        $code = rand(100000,999999);
+        $code = Num::getCode($len);
         $sms = AliSms::sendCode($phoneNumber,$code);
         if($sms) {
             // todo 把短信验证码记录到redis，并且给出一个失效时间 1min有效

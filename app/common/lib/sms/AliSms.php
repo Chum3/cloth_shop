@@ -6,7 +6,7 @@
  * Time: 18:43
  */
 declare(strict_types=1);
-namespace app\commom\lib\sms;
+namespace app\common\lib\sms;
 
 use AlibabaCloud\Client\AlibabaCloud;
 use AlibabaCloud\Client\Exception\ClientException;
@@ -52,7 +52,7 @@ class AliSms {
                     ],
                 ])
                 ->request();
-            print_r($result->toArray());
+            // print_r($result->toArray());
         } catch (ClientException $e) {
             return false;
             // echo $e->getErrorMessage() . PHP_EOL;
