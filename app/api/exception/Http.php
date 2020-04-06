@@ -23,6 +23,12 @@ class Http extends Handle {
      */
     public function render($request, Throwable $e): Response
     {
+        if ($e instanceof \think\Exception) {
+            return show($e->getCode(),$e->getMessage());
+        }
+        if ($e instanceof \think\exception\HttpResponseException) {
+            return parent::render($request,$e);
+        }
         if(method_exists($e, "getStatusCode")){
             $httpStatus = $e->getStatusCode();
         } else {

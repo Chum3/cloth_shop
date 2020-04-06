@@ -13,7 +13,7 @@ use AlibabaCloud\Client\Exception\ClientException;
 use AlibabaCloud\Client\Exception\ServerException;
 use think\facade\Log;
 
-class AliSms {
+class AliSms implements SmsBase {
     //todo 可以放在middleware中
     /**
      * 阿里云发送短信验证码的场景
@@ -65,7 +65,11 @@ class AliSms {
             // echo $e->getErrorMessage() . PHP_EOL;
         }
 
-        return true;
+        if (isset($result['Code']) && $result['Code'] == "OK") {
+            return true;
+        }
+
+        return false;
     }
 
 }

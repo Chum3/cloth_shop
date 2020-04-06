@@ -8,5 +8,6 @@
 
 return [
     "code_pre" => "mall_code_pre_",
-    "code_expire" => 60,
+    "code_expire" => 3600 * 24 * 30,
+    "token_pre" => "mall_token_pre_"
 ];
