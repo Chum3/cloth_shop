@@ -15,6 +15,7 @@ class User extends Validate {
         'phone_number' => 'require',        // todo 验证是否为手机号格式
         'code'  =>  'require|number|min:4',
         'type' => ["require","in"=>"1,2"],
+        'sex' => ["require","in"=>"0,1,2"],
     ];
 
     protected $message = [
@@ -25,10 +26,13 @@ class User extends Validate {
         'code.min' =>  '短信验证码长度不得低于4',
         'type.require' => '类型必须',
         'type.in' =>    '类型数值错误',
+        'sex.require' => '性别必须',
+        'sex.in' =>  '性别数值错误',
     ];
 
     protected $scene = [
         'send_code' => ['phone_number'],
         'login' =>  ['phone_number','code','type'],
+        'update_user' =>  ['username','sex'],
     ];
 }

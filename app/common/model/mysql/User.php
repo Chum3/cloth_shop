@@ -28,6 +28,18 @@ class User extends Model {
         return $this->where($where)->find();
     }
 
+    public function getUserByUsername($username) {
+        if(empty($phoneNumber)) {
+            return false;
+        }
+
+        $where = [
+            "username" => $username,
+        ];
+
+        return $this->where($where)->find();
+    }
+
     /**
      * @param $id
      * @return array|bool|Model|null
