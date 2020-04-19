@@ -91,4 +91,20 @@ class Category extends Model {
         return $res;
     }
 
+    public function getNormalByPid($pid = 0, $field) {
+        $where = [
+            "pid" => $pid,
+            "status" => config("status.mysql.table_normal"),
+        ];
+        $order = [
+            "listorder" => "desc",
+            "id" => "desc",
+        ];
+        $res = $this->where($where)
+            ->field($field)
+            ->order($order)
+            ->select();
+        return $res;
+    }
+
 }

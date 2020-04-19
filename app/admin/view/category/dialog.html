@@ -72,27 +72,27 @@
 <script src="{__STATIC_PATH}admin/js/common.js" charset="utf-8"></script>
 <script>
 
-    let moke = [
-        {
-            id: 1,
-            name: '1级分类',
-            pid: 0
-        }, {
-            id: 1,
-            name: '11级分类',
-            pid: 0
-        }, {
-            id: 1,
-            name: '12级分类',
-            pid: 0
-        }, {
-            id: 1,
-            name: '13级分类',
-            pid: 0
-        },
-    ];
+    // let moke = [
+    //     {
+    //         id: 1,
+    //         name: '1级分类',
+    //         pid: 0
+    //     }, {
+    //         id: 1,
+    //         name: '11级分类',
+    //         pid: 0
+    //     }, {
+    //         id: 1,
+    //         name: '12级分类',
+    //         pid: 0
+    //     }, {
+    //         id: 1,
+    //         name: '13级分类',
+    //         pid: 0
+    //     },
+    // ];
 
-
+    let moke = {$categorys|raw}
 
     layui.use(['form'], function () {
         function queryClassif() { // 请求分类 后端接口

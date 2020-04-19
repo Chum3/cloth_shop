@@ -116,7 +116,19 @@ class Category extends AdminBase {
     }
 
     public function dialog() {
-        return view();
+        $categorys = (new CategoryBus())->getNormalByPid();
+        return view("", [
+            "categorys" => json_encode($categorys),
+        ]);
+    }
+
+    /**
+     * @return \think\response\Json
+     */
+    public function getByPid() {
+        $pid = input("param.pid", 0, "intval");
+        $categorys = (new CategoryBus())->getNormalByPid($pid);
+        return show(config("status.success"), "OK", $categorys);
     }
 
 }
