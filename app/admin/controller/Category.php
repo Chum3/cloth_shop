@@ -115,4 +115,8 @@ class Category extends AdminBase {
         }
     }
 
+    public function dialog() {
+        return view();
+    }
+
 }
