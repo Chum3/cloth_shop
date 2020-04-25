@@ -8,9 +8,14 @@
 
 namespace app\admin\controller;
 use app\common\business\Goods as GoodsBis;
+use app\common\lib\Status as StatusLib;
 class Goods extends AdminBase {
     public function index() {
-        return view();
+        $data = [];
+        $goods = (new GoodsBis())->getLists($data, 5);
+        return view("", [
+            "goods" => $goods,
+        ]);
     }
 
     public function add() {
@@ -24,20 +29,67 @@ class Goods extends AdminBase {
         }
         // todo validate 判断数据类型
         $data = input("param.");
-
+        $check = $this->request->checkToken('__token__');
+        if (!$check) {
+            return show(config('status.error'),"非法请求");
+        }
         // 数据处理
         $data['category_path_id'] = $data['category_id'];
         $result = explode(",",$data['category_path_id']);
         $data['category_id'] = end($result);
 
-        try {
-            $res = (new GoodsBis())->insertData($data);
-        }catch (\Exception $e) {
-            return show(config('status.error'), $e->getMessage());
-        }
+        $res = (new GoodsBis())->insertData($data);
         if (!$res) {
             return show(config('status.error'),"商品新增失败");
         }
         return show(config('status.success'), "商品新增成功");
+    }
+
+    /**
+     * 排序
+     * @return \think\response\Json
+     */
+    public function listorder() {
+        $id = input("param.id", 0, "intval");
+        // todo 用validate验证机制处理相关验证
+        $listorder = input("param.listorder",0,"intval");
+        if (!$id) {
+            return show(config('status.error'), "参数错误");
+        }
+
+        try {
+            $res = (new GoodsBis())->listorder($id, $listorder);
+        } catch (\Exception $e) {
+            return show(config('status.error'), $e->getMessage());
+        }
+        if ($res) {
+            return show(config('status.success'), "排序成功");
+        } else {
+            return show(config('status.error'), "排序失败");
+        }
+    }
+
+    /**
+     * 更新状态
+     * @return \think\response\Json
+     */
+    public function status() {
+        $status = input("param.status", 0, "intval");
+        $id = input("param.id",0, "intval");
+        // todo 使用validate验证机制处理相关认证
+        if (!$id || !in_array($status, StatusLib::getTableStatus())) {
+            return show(config('status.error'), "参数错误");
+        }
+
+        try {
+            $res = (new GoodsBis())->status($id, $status);
+        } catch (\Exception $e) {
+            return show(config('status.errpr'), $e->getMessage());
+        }
+        if($res) {
+            return show(config('status.success'), "状态更新成功");
+        } else {
+            return show(config('status.error'), "状态更新失败");
+        }
     }
 }

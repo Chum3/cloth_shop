@@ -215,6 +215,7 @@
             </div>
         </div>
     </div>
+    <div>{:token_field()}</div>
     <div class="layui-form-item layui-form">
         <div class="layui-input-block">
             <button type="submit" class="layui-btn" id='btnSubmit' lay-submit="" lay-filter="goods_submit">立即提交</button>
@@ -326,6 +327,7 @@
                 big_image: $('#main_img').attr('src'),
                 carousel_image: images('banner_img'),
                 recommend_image: images('show_img'),
+                __token__:$("input[name='__token__']").val(),
                 skus: skus(),
                 description: layedit.getContent(edit_index),
                 add_spec_arr: addSpecArr() // 提交的规格数据

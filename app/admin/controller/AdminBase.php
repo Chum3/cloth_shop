@@ -37,4 +37,5 @@ class AdminBase extends BaseController {
     public function redirect(...$args) {
         throw new HttpResponseException(redirect(...$args));
     }
+
 }

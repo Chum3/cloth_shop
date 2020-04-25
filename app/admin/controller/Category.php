@@ -19,7 +19,7 @@ class Category extends AdminBase {
         try {
             $categorys = (new CategoryBus())->getLists($data,5);
         }catch (\Exception $e) {
-            $categorys = [];
+            $categorys = \app\common\lib\Arr::getPaginateDefaultData(5);
         }
         return View::fetch("", [
             "categorys" => $categorys,
