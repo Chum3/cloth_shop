@@ -9,13 +9,7 @@ namespace app\common\model\mysql;
 
 use think\Model;
 
-class Category extends Model {
-
-    /**
-     * 自动生成写入时间
-     * @var bool
-     */
-    protected $autoWriteTimestamp = true;
+class Category extends BaseModel {
 
     public function getCategoryIdByName($name) {
         if(empty($name)) {
@@ -63,17 +57,6 @@ class Category extends Model {
             ->order($order)
             ->paginate($num);
         return $result;
-    }
-
-    /**
-     * 根据ID 更新库里面的数据
-     * @param $id
-     * @param $data
-     * @return bool
-     */
-    public function updateById($id, $data) {
-        $data['update_time'] = time();
-        return $this->where(["id" => $id])->save($data);
     }
 
     /**
