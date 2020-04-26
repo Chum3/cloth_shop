@@ -91,7 +91,7 @@
                         <td data-id="{$vo.id}"><input type="checkbox" {if $vo.status == 1}checked{/if} name="status" lay-skin="switch"
                             lay-filter="switchStatus"
                             lay-text="开启|关闭"></td>
-                        <td data-id="{$vo.id}"><input type="checkbox" {if $vo.status == 1}checked{/if} name="is_index_recommend" lay-skin="switch"
+                        <td data-id="{$vo.id}"><input type="checkbox" {if $vo.is_index_recommend == 1}checked{/if} name="is_index_recommend" lay-skin="switch"
                                    lay-filter="isIndexRecommend"
                                    lay-text="是|否"></td>
                         <td>
@@ -172,7 +172,8 @@
                     if (res.status == 1) {
                         window.location.reload();
                     } else {
-                        layer.msg("修改状态失败")
+                        layer.msg("修改状态失败");
+                        window.location.reload();
                     }
                 }
             });
@@ -188,7 +189,8 @@
                     if (res.status == 1) {
                         window.location.reload();
                     } else {
-                        layer.msg("修改推荐失败")
+                        layer.msg("修改推荐失败");
+                        window.location.reload();
                     }
                 }
             });
@@ -207,7 +209,8 @@
                 if (res.status == 1) {
                     window.location.reload();
                 } else {
-                    layer.msg("排序失败")
+                    layer.msg("排序失败");
+                    window.location.reload();
                 }
             });
 

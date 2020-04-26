@@ -12,4 +12,11 @@ class Status {
         $mysqlStatus = config("status.mysql");
        return array_values($mysqlStatus);
     }
+
+    public static function getRecommendStatus() {
+        $recommendStatus = config("status.recommend");
+       return array_values($recommendStatus);
+    }
+
+
 }

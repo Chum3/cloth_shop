@@ -14,5 +14,9 @@ return [
         "table_pedding" => 0,   //待审
         "table_delete" => 99,   //删除
         ],
-    ""
+    // 推荐状态
+    "recommend" => [
+        "isRecommend" => 1,
+        "notRecommend" => 0,
+    ]
 ];

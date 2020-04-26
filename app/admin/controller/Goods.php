@@ -93,7 +93,7 @@ class Goods extends AdminBase {
         }
 
         try {
-            $res = (new GoodsBis())->status($id, $status);
+            $res = (new GoodsBis())->status($id, 'status', $status);
         } catch (\Exception $e) {
             return show(config('status.errpr'), $e->getMessage());
         }
@@ -108,12 +108,12 @@ class Goods extends AdminBase {
         $isIndexRecommend = input("param.isIndexRecommend", 0, "intval");
         $id = input("param.id",0, "intval");
         // todo 使用validate验证机制处理相关认证
-        if (!$id || !in_array($isIndexRecommend, StatusLib::getTableStatus())) {
+        if (!$id || !in_array($isIndexRecommend, StatusLib::getRecommendStatus())) {
             return show(config('status.error'), "参数错误");
         }
 
         try {
-            $res = (new GoodsBis())->status($id, $status);
+            $res = (new GoodsBis())->status($id,'is_index_recommend', $isIndexRecommend);
         } catch (\Exception $e) {
             return show(config('status.errpr'), $e->getMessage());
         }

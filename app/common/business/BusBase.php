@@ -74,18 +74,18 @@ class BusBase
         return $res;
     }
 
-    public function status($id, $status) {
+    public function status($id, string $fieldKey, $fieldValue) {
         // 查询 id这条数据是否存在
         $res = $this->getById($id);
         if (!$res) {
             throw new \think\Exception("不存在该条记录");
         }
-        if ($res['status'] == $status) {
+        if ($res[$fieldKey] == $fieldValue) {
             throw new \think\Exception("状态修改前和修改后一样,请停止这种无意义的行为OMG！");
         }
 
         $data = [
-            "status" => intval($status),
+            $fieldKey => intval($fieldValue),
         ];
 
         try {
