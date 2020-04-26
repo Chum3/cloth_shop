@@ -14,4 +14,5 @@ return [
         "table_pedding" => 0,   //待审
         "table_delete" => 99,   //删除
         ],
+    ""
 ];

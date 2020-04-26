@@ -12,9 +12,20 @@ use app\common\lib\Status as StatusLib;
 class Goods extends AdminBase {
     public function index() {
         $data = [];
+        $title = input("param.title", "", "trim");
+        $time = input("param.time", "", "trim");
+        $searchData['title'] =  input("param.title", "");;
+        $searchData['time'] = input("param.time", "");;
+        if (!empty($title)) {
+            $data['title'] = $title;
+        }
+        if (!empty($time)) {
+            $data['create_time'] = explode(" - ", $time);
+        }
         $goods = (new GoodsBis())->getLists($data, 5);
         return view("", [
             "goods" => $goods,
+            "searchData" => $searchData,
         ]);
     }
 
@@ -78,6 +89,26 @@ class Goods extends AdminBase {
         $id = input("param.id",0, "intval");
         // todo 使用validate验证机制处理相关认证
         if (!$id || !in_array($status, StatusLib::getTableStatus())) {
+            return show(config('status.error'), "参数错误");
+        }
+
+        try {
+            $res = (new GoodsBis())->status($id, $status);
+        } catch (\Exception $e) {
+            return show(config('status.errpr'), $e->getMessage());
+        }
+        if($res) {
+            return show(config('status.success'), "状态更新成功");
+        } else {
+            return show(config('status.error'), "状态更新失败");
+        }
+    }
+
+    public function isIndexRecommend() {
+        $isIndexRecommend = input("param.isIndexRecommend", 0, "intval");
+        $id = input("param.id",0, "intval");
+        // todo 使用validate验证机制处理相关认证
+        if (!$id || !in_array($isIndexRecommend, StatusLib::getTableStatus())) {
             return show(config('status.error'), "参数错误");
         }
 
