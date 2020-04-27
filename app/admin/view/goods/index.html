@@ -170,7 +170,7 @@
                 url: '{:url("goods/status")}?id=' + id + '&status=' + status,
                 success: (res) => {
                     if (res.status == 1) {
-                        window.location.reload();
+
                     } else {
                         layer.msg("修改状态失败");
                         window.location.reload();
@@ -187,7 +187,7 @@
                 url: '{:url("goods/isIndexRecommend")}?id=' + id + '&isIndexRecommend=' + isIndexRecommend,
                 success: (res) => {
                     if (res.status == 1) {
-                        window.location.reload();
+
                     } else {
                         layer.msg("修改推荐失败");
                         window.location.reload();
