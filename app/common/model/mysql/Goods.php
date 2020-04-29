@@ -5,7 +5,9 @@
  * Date: 2020/4/20
  * Time: 23:37
  */
+
 namespace app\common\model\mysql;
+
 use think\Model;
 
 class Goods extends BaseModel {
@@ -34,7 +36,7 @@ class Goods extends BaseModel {
         $order = ["listorder" => "desc", "id" => "desc"];
         if (!empty($likeKeys)) {
             $res = $this->withSearch($likeKeys, $data);
-        }else {
+        } else {
             $res = $this;
         }
         $list = $res->whereIn("status", [0, 1])
@@ -42,5 +44,36 @@ class Goods extends BaseModel {
             ->paginate($num);
         // echo $this->getLastSql();exit;
         return $list;
+    }
+
+    public function getNormalGoodByCondition($where, $field = true, $limit = 5) {
+        $order = ["listorder" => "desc", "id" => "desc"];
+
+        $where["status"] = config("status.success");
+
+        $result = $this->where($where)
+            ->order($order)
+            ->field($field)
+            ->limit($limit)
+            ->select();
+
+        return $result;
+    }
+
+    public function getImageAttr($value) {
+        return request()->domain().$value;
+    }
+
+    public function getNormalGoodsFindInSetCategoryId($categoryId, $field = true, $limit = 10) {
+        $order = ["listorder" => "desc", "id" => "desc"];
+
+        $result = $this->whereFindInSet("category_path_id", $categoryId)
+                ->where("status", "=", config("status.success"))
+                ->order($order)
+                ->field($field)
+                ->limit(10)
+                ->select();
+        // echo $this->getLastSql();exit;
+        return $result;
     }
 }

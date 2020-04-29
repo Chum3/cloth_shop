@@ -86,4 +86,43 @@ class Goods extends BusBase
         }
         return $result;
     }
+
+    public function getRotationChart() {
+        $data = [
+            "is_index_recommend" => 1,
+        ];
+        $field = "sku_id as id, title, big_image as image";
+
+        try {
+            $result = $this->model->getNormalGoodByCondition($data, $field, 5);
+        }catch (\Exception $e) {
+            return [];
+        }
+        return $result->toArray();
+    }
+
+    public function categoryGoodsRecommend($categoryIds) {
+        if (!$categoryIds) {
+            return [];
+        }
+        // todo 栏目的获取
+        foreach ($categoryIds as $k => $categoryId) {
+            $result[$k]["categorys"] = [];
+        }
+        foreach ($categoryIds as $keys => $categoryId) {
+            $result[$keys]["goods"] = $this->getNormalGoodsFindInSetCategoryId($categoryId);
+        }
+        return $result;
+    }
+
+    public function getNormalGoodsFindInSetCategoryId($categoryId) {
+        $field = "sku_id as id, title, price, recommend_image as image";
+        try {
+            $result = $this->model->getNormalGoodsFindInSetCategoryId($categoryId, $field);
+        }catch (\Exception $e) {
+            return [];
+        }
+
+        return $result->toArray();
+    }
 }
