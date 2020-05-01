@@ -8,8 +8,6 @@
 
 namespace app\common\model\mysql;
 
-use think\Model;
-
 class Goods extends BaseModel {
     /**
      * title查询条件表达式
@@ -68,12 +66,29 @@ class Goods extends BaseModel {
         $order = ["listorder" => "desc", "id" => "desc"];
 
         $result = $this->whereFindInSet("category_path_id", $categoryId)
-                ->where("status", "=", config("status.success"))
-                ->order($order)
-                ->field($field)
-                ->limit(10)
-                ->select();
+            ->where("status", "=", config("status.success"))
+            ->order($order)
+            ->field($field)
+            ->limit(10)
+            ->select();
         // echo $this->getLastSql();exit;
         return $result;
+    }
+
+    public function getNormalLists($data, $num = 10, $field = true, $order) {
+        $res = $this;
+        if (isset($data['category_path_id'])) {
+            $res = $this->whereFindInSet("category_path_id", $data['category_path_id']);
+        }
+        if (isset($data['keyword'])) {
+            $res = $this->whereLike("title|keywords|sub_title|promotion_title", '%' . $data['keyword'] . '%', 'OR');
+        }
+        $list = $res->where("status", "=", config("status.mysql.table_normal"))
+            ->order($order)
+            ->field($field)
+            ->paginate($num);
+
+        // echo $this->getLastSql();exit;
+        return $list;
     }
 }

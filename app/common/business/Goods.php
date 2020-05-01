@@ -6,8 +6,8 @@
  * Time: 22:39
  */
 namespace app\common\business;
-use app\common\model\mysql\Goods as GoodsModel;
 use app\common\business\GoodsSku as GoodsSkuBis;
+use app\common\model\mysql\Goods as GoodsModel;
 
 class Goods extends BusBase
 {
@@ -119,10 +119,30 @@ class Goods extends BusBase
         $field = "sku_id as id, title, price, recommend_image as image";
         try {
             $result = $this->model->getNormalGoodsFindInSetCategoryId($categoryId, $field);
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             return [];
         }
 
         return $result->toArray();
+    }
+
+    public function getNormalLists($data, $num = 5, $order) {
+        try {
+            $field = "sku_id as id, title, recommend_image as image,price";
+            $list = $this->model->getNormalLists($data, $num, $field, $order);
+            $res = $list->toArray();
+            $result = [
+                "total_page_num" => isset($res['last_page']) ? $res['last_page'] : 0,
+                "count" => isset($res['total']) ? $res['total'] : 0,
+                "page" => isset($res['current_page']) ? $res['current_page'] : 0,
+                "page_size" => $num,
+                "list" => isset($res['data']) ? $res['data'] : []
+            ];
+        } catch (\Exception $e) {
+            ///echo $e->getMessage();exit;
+            // 演示之前的地方
+            $result = [];
+        }
+        return $result;
     }
 }

@@ -9,13 +9,14 @@
 namespace app\admin\controller;
 use app\common\business\Goods as GoodsBis;
 use app\common\lib\Status as StatusLib;
+
 class Goods extends AdminBase {
     public function index() {
         $data = [];
         $title = input("param.title", "", "trim");
         $time = input("param.time", "", "trim");
-        $searchData['title'] =  input("param.title", "");;
-        $searchData['time'] = input("param.time", "");;
+        $searchData['title'] = input("param.title", "");
+        $searchData['time'] = input("param.time", "");
         if (!empty($title)) {
             $data['title'] = $title;
         }
