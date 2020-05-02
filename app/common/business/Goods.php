@@ -7,7 +7,9 @@
  */
 namespace app\common\business;
 use app\common\business\GoodsSku as GoodsSkuBis;
+use app\common\business\SpecsValue as SpecsValueBis;
 use app\common\model\mysql\Goods as GoodsModel;
+use think\facade\Cache;
 
 class Goods extends BusBase
 {
@@ -35,9 +37,9 @@ class Goods extends BusBase
                 // todo
                 return true;
             } else if ($data['goods_specs_type'] == 2) {
-                $goodsSkuBisobj = new GoodsSkuBis();
+                $goodsSkuBisObj = new GoodsSkuBis();
                 $data['goods_id'] = $goodsId;
-                $res = $goodsSkuBisobj->saveAll($data);
+                $res = $goodsSkuBisObj->saveAll($data);
                 // 如果不为空
                 if (!empty($res)) {
                     // 总库存
@@ -144,5 +146,61 @@ class Goods extends BusBase
             $result = [];
         }
         return $result;
+    }
+
+    public function getGoodsDetailBySkuId($skuId) {
+        // sku_id sku表 => goods_id goods表 => tilte image description
+        // sku  => sku数据
+        // join
+        $skuBisObj = new GoodsSkuBis();
+        $goodsSku = $skuBisObj->getNormalSkuAndGoods($skuId);
+
+        if (!$goodsSku) {
+            return [];
+        }
+        if (empty($goodsSku['goods'])) {
+            return [];
+        }
+        $goods = $goodsSku['goods'];
+        $skus = $skuBisObj->getSkusByGoodsId($goods['id']);
+        if (!$skus) {
+            return [];
+        }
+        $flagValue = "";
+        foreach ($skus as $sv) {
+            if ($sv['id'] == $skuId) {
+                $flagValue = $sv["specs_value_ids"];
+            }
+        }
+        $gids = array_column($skus, "id", "specs_value_ids");
+
+        if ($goods['goods_specs_type'] == 1) {
+            $sku = [];
+        } else {
+            $sku = (new SpecsValueBis())->dealGoodsSkus($gids, $flagValue);
+        }
+        $result = [
+            "title" => $goods['title'],
+            "price" => $goodsSku['price'],
+            "cost_price" => $goodsSku['cost_price'],
+            "sales_count" => 0,
+            "stock" => $goodsSku['stock'],
+            "gids" => $gids,
+            "image" => $goods['carousel_image'],
+            "sku" => $sku,
+            "detail" => [
+                "d1" => [
+                    "商品编码" => $goodsSku['id'],
+                    "上架时间" => $goods['create_time'],
+                ],
+                "d2" => preg_replace('/(<img.+?src=")(.*?)/', '$1' . request()->domain() . '$2', $goods['description']),
+            ],
+
+        ];
+
+        // 记录数据到redis 作为商品PV统计
+        Cache::inc("mall_pv_" . $goods['id']);
+        return $result;
+
     }
 }

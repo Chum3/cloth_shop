@@ -59,7 +59,17 @@ class Goods extends BaseModel {
     }
 
     public function getImageAttr($value) {
-        return request()->domain().$value;
+        return request()->domain() . $value;
+    }
+
+    public function getCarouselImageAttr($value) {
+        if (!empty($value)) {
+            $value = explode(",", $value);
+            $value = array_map(function ($v) {
+                return request()->domain() . $v;
+            }, $value);
+        }
+        return $value;
     }
 
     public function getNormalGoodsFindInSetCategoryId($categoryId, $field = true, $limit = 10) {

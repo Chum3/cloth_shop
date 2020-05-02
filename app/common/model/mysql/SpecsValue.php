@@ -6,11 +6,10 @@
  * Time: 12:12
  */
 namespace app\common\model\mysql;
-use think\Model;
-class SpecsValue extends Model {
+class SpecsValue extends BaseModel {
     protected $autoWriteTimestamp = true;
 
-    public function getNormalBySpecsId($specsId, $field="*") {
+    public function getNormalBySpecsId($specsId, $field = "*") {
         $where = [
             "specs_id" => $specsId,
             "status" => config("status.mysql.table_normal"),
