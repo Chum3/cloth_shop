@@ -56,4 +56,12 @@ class Arr {
         ];
         return $result;
     }
+
+    public static function arrsSortByKey($result, $key, $sort = SORT_DESC) {
+        if (!is_array($result) || !$key) {
+            return [];
+        }
+        array_multisort(array_column($result, $key), $sort, $result);
+        return $result;
+    }
 }
