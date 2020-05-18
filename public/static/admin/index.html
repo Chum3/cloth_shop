@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>小竹 在线 商城</title>
+    <meta content="webkit" name="renderer">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="*" http-equiv="Access-Control-Allow-Origin">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="telephone=no" name="format-detection">
+    <link href="images/favicon.ico" rel="icon">
+    <link href="lib/layui-v2.5.4/css/layui.css" media="all" rel="stylesheet">
+    <link href="css/layuimini.css" media="all" rel="stylesheet">
+    <link href="lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style id="layuimini-bg-color">
+    </style>
+</head>
+<body class="layui-layout-body layuimini-all">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header">
+        <div class="layui-logo">
+        </div>
+        <a>
+            <div class="layuimini-tool"><i class="fa fa-outdent" data-side-fold="1" title="展开"></i></div>
+        </a>
+        <ul class="layui-nav layui-layout-left layui-header-menu layui-header-pc-menu mobile layui-hide-xs"></ul>
+        <!--        <ul class="layui-nav layui-layout-left layui-header-menu mobile layui-hide-sm">-->
+        <!--            <li class="layui-nav-item">-->
+        <!--                <a href="javascript:;"><i class="fa fa-list-ul"></i> 选择模块</a>-->
+        <!--                <dl class="layui-nav-child layui-header-mini-menu">-->
+        <!--                </dl>-->
+        <!--            </li>-->
+        <!--        </ul>-->
+
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a data-refresh="刷新" href="javascript:;"><i class="fa fa-refresh"></i></a>
+            </li>
+            <li class="layui-nav-item layuimini-setting">
+                <a href="javascript:;">admin</a>
+                <dl class="layui-nav-child">
+
+                    <dd>
+                        <a class="login-out" href="javascript:;">退出登录</a>
+                    </dd>
+                </dl>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll layui-left-menu">
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div class="layui-tab" id="top_tabs_box" lay-filter="layuiminiTab">
+            <ul class="layui-tab-title" id="top_tabs">
+                <li class="layui-this" id="layuiminiHomeTabId" lay-id=""></li>
+            </ul>
+            <ul class="layui-nav closeBox">
+                <li class="layui-nav-item">
+                    <a href="javascript:;"> <i class="fa fa-dot-circle-o"></i> 页面操作</a>
+                    <dl class="layui-nav-child">
+                        <dd><a data-page-close="other" href="javascript:;"><i class="fa fa-window-close"></i> 关闭其他</a>
+                        </dd>
+                        <dd><a data-page-close="all" href="javascript:;"><i class="fa fa-window-close-o"></i> 关闭全部</a>
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+            <div class="layui-tab-content clildFrame">
+                <div class="layui-tab-item layui-show" id="layuiminiHomeTabIframe">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script charset="utf-8" src="lib/layui-v2.5.4/layui.js?v=1.0.4"></script>
+<script charset="utf-8" src="js/lay-config.js?v=1.0.4"></script>
+<script>
+    layui.use(['element', 'layer', 'layuimini'], function () {
+        var $ = layui.jquery,
+            element = layui.element,
+            layer = layui.layer;
+
+        layuimini.init('api/init.json'); // 左菜单数据
+
+        $('.login-out').on("click", function () {
+            layer.msg('退出登录成功', function () {
+                window.location = 'page/login.html';
+            });
+        });
+    });
+</script>
+</body>
+</html>

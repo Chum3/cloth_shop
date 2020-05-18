@@ -1,0 +1,161 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <link href="../css/sku_style.css" rel="stylesheet"/>
+    <title>sku</title>
+
+    <script src="../js/sku/jquery.min.js" type="text/javascript"></script>
+    <script src="../js/sku/createSkuTable.js?v16" type="text/javascript"></script>
+    <!--<script type="text/javascript" src="../js/sku/customSku.js"></script>-->
+    <!--<script type="text/javascript" src="../js/plugins/layer/layer.js"></script>-->
+    <script charset="utf-8" src="../lib/layui-v2.5.4/layui.js"></script>
+
+</head>
+<body>
+<ul class="SKU_TYPE">
+    <li is_required='1' propid='3' sku-type-name="颜色">颜色：</li>
+</ul>
+<ul>
+    <li><label><input class="sku_value" propvalid='31' type="checkbox" value="土豪金"/>土豪金</label></li>
+    <li><label><input class="sku_value" propvalid='32' type="checkbox" value="银白色"/>银白色</label></li>
+    <li><label><input class="sku_value" propvalid='33' type="checkbox" value="深空灰"/>深空灰</label></li>
+    <li><label><input class="sku_value" propvalid='34' type="checkbox" value="黑色"/>黑色</label></li>
+    <li><label><input class="sku_value" propvalid='33' type="checkbox" value="玫瑰金"/>玫瑰金</label></li>
+</ul>
+<div class="clear"></div>
+
+<ul class="SKU_TYPE">
+    <li is_required='1' propid='1' sku-type-name="存储"><em>*</em>型号：</li>
+</ul>
+<ul>
+    <li><label><input class="sku_value" propvalid='11' type="checkbox" value="16G"/>16G</label></li>
+    <li><label><input class="sku_value" propvalid='12' type="checkbox" value="32G"/>32G</label></li>
+    <li><label><input class="sku_value" propvalid='13' type="checkbox" value="64G"/>64G</label></li>
+    <li><label><input class="sku_value" propvalid='14' type="checkbox" value="128G"/>128G</label></li>
+    <li><label><input class="sku_value" propvalid='15' type="checkbox" value="256G"/>256G</label></li>
+</ul>
+<div class="clear"></div>
+<ul class="SKU_TYPE">
+    <li is_required='1' propid='2' sku-type-name="版本"><em>*</em>版本：</li>
+</ul>
+<ul>
+    <li><label><input class="sku_value" propvalid='21' type="checkbox" value="中国大陆版"/>中国大陆版</label></li>
+    <li><label><input class="sku_value" propvalid='22' type="checkbox" value="港版"/>港版</label></li>
+    <li><label><input class="sku_value" propvalid='23' type="checkbox" value="韩版"/>韩版</label></li>
+    <li><label><input class="sku_value" propvalid='24' type="checkbox" value="美版"/>美版</label></li>
+    <li><label><input class="sku_value" propvalid='25' type="checkbox" value="日版"/>日版</label></li>
+</ul>
+<!--<div class="clear"></div>-->
+
+<!--<div class="clear"></div>-->
+<!--<ul class="SKU_TYPE">-->
+<!--<li is_required='1' propid='4' sku-type-name="类型"><em>*</em>类型：</li>-->
+<!--</ul>-->
+<!--<ul>-->
+<!--<li><label><input type="checkbox" class="sku_value" propvalid='41' value="儿童" />儿童</label></li>-->
+<!--<li><label><input type="checkbox" class="sku_value" propvalid='42' value="成人" />成人</label></li>-->
+<!--</ul>-->
+<div class="clear"></div>
+<!--<button class="cloneSku">添加自定义sku属性</button>-->
+
+<!--sku模板,用于克隆,生成自定义sku-->
+<div id="skuCloneModel" style="display: none;">
+    <div class="clear"></div>
+    <ul class="SKU_TYPE">
+        <li is_required='0' propid='' sku-type-name="">
+            <a class="delCusSkuType" href="javascript:void(0);">移除</a>
+            <input class="cusSkuTypeInput" type="text"/>：
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <input class="model_sku_val" propvalid='' type="checkbox" value=""/>
+            <input class="cusSkuValInput" type="text"/>
+        </li>
+        <!--<button class="cloneSkuVal">添加自定义属性值</button>-->
+    </ul>
+    <div class="clear"></div>
+</div>
+<!--单个sku值克隆模板-->
+<!--<li style="display: none;" id="onlySkuValCloneModel">-->
+<!--<input type="checkbox" class="model_sku_val" propvalid='' value="" />-->
+<!--<input type="text" class="cusSkuValInput" />-->
+<!--<a href="javascript:void(0);" class="delCusSkuVal">删除</a>-->
+<!--</li>-->
+<div class="clear"></div>
+<div id="skuTable">
+    <table class="skuTable">
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<button class="layui-btn btn">获取json 数据</button>
+<script src="../js/sku/getSetSkuVals.js?1" type="text/javascript"></script>
+<script>
+    // 模拟后台数据
+    let moke = [{
+        color: "土豪金", size: "64G", version: "港版", price: "6767", store: "57",
+        propvalnames: {propvalids: "31,13,22", skuStock: "57", skuPrice: "6767"}
+    },
+        {
+            color: "土豪金", size: "128G", version: "港版", price: "5675", store: "67",
+            propvalnames: {
+                propvalids: "31,14,22", skuStock: "67", skuPrice: "5675"
+            }
+        }
+    ]
+
+    for (let item of moke) {
+        console.log(item, '657657')
+        let propvalids = item['propvalnames']['propvalids'].split(',')
+
+        $(".sku_value").each(function (i, item) {
+            let propvalid = $(this).attr('propvalid')
+            if (propvalids.includes(propvalid)) {
+                $(this).attr('checked', true)
+            }
+        })
+
+
+        alreadySetSkuVals[item['propvalnames']['propvalids']] = {
+            "skuPrice": item['propvalnames']['skuPrice'],
+            "skuStock": item['propvalnames']['skuStock']
+        }
+    }
+    createTab()
+    $('.btn').on('click', () => {
+
+        let tabTitles = ['color', 'size', 'version', 'price', 'store'];
+        let arrJson = []
+        let alreadySetSkuVals = [];
+        //获取设置的SKU属性值
+        $("tr[class*='sku_table_tr']").each(function (i, item) {
+            let newObj = {}
+            var skuPrice = $(this).find("input[type='text'][class*='setting_sku_price']").val() || 0;//SKU价格
+            var skuStock = $(this).find("input[type='text'][class*='setting_sku_stock']").val() || 0;//SKU库存
+            // if(skuPrice || skuStock){//已经设置了全部或部分值
+            let propvalids = $(this).attr('propvalids')// 31,13,22
+            let propvalnames = $(this).attr('propvalnames') // 土豪金;64G;港版
+
+
+            let names = propvalnames.split(';')
+            for (let j = 0; j < names.length; j++) {
+                newObj[tabTitles[j]] = names[j]
+            }
+            newObj[tabTitles[names.length]] = skuPrice
+            newObj[tabTitles[names.length + 1]] = skuStock
+            newObj['propvalnames'] = {propvalids, skuStock, skuPrice}
+            alreadySetSkuVals.push(newObj)
+        });
+        console.log(alreadySetSkuVals, '获取已经设置的SKU值')
+        getAlreadySetSkuVals();//获取已经设置的SKU值
+    })
+</script>
+
+</body>
+</html>
