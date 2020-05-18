@@ -1,30 +1,30 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "b3549ae77b600b5a29c5bd952aabfe71",
-    "packages": [
-        {
-            "name": "adbario/php-dot-notation",
-            "version": "2.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/adbario/php-dot-notation.git",
-                "reference": "eee4fc81296531e6aafba4c2bbccfc5adab1676e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/adbario/php-dot-notation/zipball/eee4fc81296531e6aafba4c2bbccfc5adab1676e",
-                "reference": "eee4fc81296531e6aafba4c2bbccfc5adab1676e",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+  "_readme": [
+    "This file locks the dependencies of your project to a known state",
+    "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+    "This file is @generated automatically"
+  ],
+  "content-hash": "a2fb1032ff00b2e1b33822763dc27e7b",
+  "packages": [
+    {
+      "name": "adbario/php-dot-notation",
+      "version": "2.2.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/adbario/php-dot-notation.git",
+        "reference": "eee4fc81296531e6aafba4c2bbccfc5adab1676e"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/adbario/php-dot-notation/zipball/eee4fc81296531e6aafba4c2bbccfc5adab1676e",
+        "reference": "eee4fc81296531e6aafba4c2bbccfc5adab1676e",
+        "shasum": "",
+        "mirrors": [
+          {
+            "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+            "preferred": true
+          }
+        ]
             },
             "require": {
                 "ext-json": "*",
@@ -1701,36 +1701,82 @@
                 "php": ">=7.1.0",
                 "topthink/think-template": "^2.0"
             },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "think\\view\\driver\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "liu21st",
-                    "email": "liu21st@gmail.com"
-                }
-            ],
-            "description": "thinkphp template driver",
-            "time": "2019-11-06T11:40:13+00:00"
+          "type": "library",
+          "autoload": {
+            "psr-4": {
+              "think\\view\\driver\\": "src"
+            }
+          },
+          "notification-url": "https://packagist.org/downloads/",
+          "license": [
+            "Apache-2.0"
+          ],
+          "authors": [
+            {
+              "name": "liu21st",
+              "email": "liu21st@gmail.com"
+            }
+          ],
+          "description": "thinkphp template driver",
+          "time": "2019-11-06T11:40:13+00:00"
+        },
+    {
+      "name": "wantp/snowflake",
+      "version": "v1.2.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/wantp/snowflake.git",
+        "reference": "821c2800521cddc31afd8dd980090883abc7fe2d"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/wantp/snowflake/zipball/821c2800521cddc31afd8dd980090883abc7fe2d",
+        "reference": "821c2800521cddc31afd8dd980090883abc7fe2d",
+        "shasum": "",
+        "mirrors": [
+          {
+            "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+            "preferred": true
+          }
+        ]
+      },
+      "require": {
+        "php": ">=7.0.0"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "wantp\\Snowflake\\": "src/Snowflake/"
         }
-    ],
-    "packages-dev": [
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
         {
-            "name": "symfony/polyfill-php72",
-            "version": "v1.14.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "46ecacf4751dd0dc81e4f6bf01dbf9da1dc1dadf"
-            },
-            "dist": {
+          "name": "zhangrongwang",
+          "email": "zhangrongwang798@gmail.com"
+        }
+      ],
+      "description": "A package for create unique id by snowflake",
+      "keywords": [
+        "snowflake",
+        "uniqueId"
+      ],
+      "time": "2019-08-05T07:14:56+00:00"
+    }
+  ],
+  "packages-dev": [
+    {
+      "name": "symfony/polyfill-php72",
+      "version": "v1.14.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/symfony/polyfill-php72.git",
+        "reference": "46ecacf4751dd0dc81e4f6bf01dbf9da1dc1dadf"
+      },
+      "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/46ecacf4751dd0dc81e4f6bf01dbf9da1dc1dadf",
                 "reference": "46ecacf4751dd0dc81e4f6bf01dbf9da1dc1dadf",
@@ -1925,7 +1971,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1.0"
+      "php": ">=7.1.0",
+      "ext-json": "*"
     },
     "platform-dev": []
 }

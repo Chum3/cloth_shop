@@ -97,4 +97,14 @@ class BusBase
         return $res;
     }
 
+    public function updateStock($data) {
+        // 实际上 这个地方 是有性能瓶颈
+        // 10 sku_id stock  1 => 10 2= > 4  2 1  1 =>   9 3
+        // 批量更新方式去处理
+        foreach ($data as $value) {
+            $this->model->decStock($value['id'], $value['num']);
+        }
+        return true;
+    }
+
 }

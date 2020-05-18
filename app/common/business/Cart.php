@@ -33,6 +33,9 @@ class Cart extends BusBase {
             if ($get) {
                 $get = json_decode($get, true);
                 $data['num'] = $data['num'] + $get['num'];
+                if ($data['num'] > $goodsSku['goods']['stock']) {
+                    return FALSE;
+                }
             }
             $res = Cache::hSet(Key::userCart($userId), (string)$id, json_encode($data));
         } catch (\Exception $e) {
@@ -120,6 +123,15 @@ class Cart extends BusBase {
      * @throws \think\Exception
      */
     public function updateRedis($userId, $id, $num) {
+        // id获取商品数据
+        $goodsSku = (new GoodsSku())->getNormalSkuAndGoods($id);
+        if (!$goodsSku) {
+            return FALSE;
+        }
+        if ($num > $goodsSku['goods']['stock']) {
+            throw new \think\Exception("该购物车的数已超过库存，您更新没有任何意义");
+
+        }
         try {
             $get = Cache::hGet(Key::userCart($userId), $id);
         } catch (\Exception $e) {

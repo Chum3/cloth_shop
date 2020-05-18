@@ -26,9 +26,9 @@ return [
         ],
         // 更多的缓存连接
         'redis' => [
-            'host' =>   '127.0.0.1',
-            'port' =>   6379,
-            'type'  =>  'redis',
+            'host' => config('redis.host'),
+            'port' => config('redis.port'),
+            'type' => config('redis.type'),
         ],
     ],
 ];

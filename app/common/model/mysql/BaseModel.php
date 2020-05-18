@@ -24,4 +24,37 @@ class BaseModel extends Model {
             ->where("status", "=", config("status.mysql.table_normal"))
             ->select();
     }
+
+    /**
+     * @param array $condition
+     * @param array $order
+     * @return bool|\think\Collection
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\DbException
+     * @throws \think\db\exception\ModelNotFoundException
+     */
+    public function getByCondition($condition = [], $order = ["id" => "desc"]) {
+        if (!$condition || !is_array($condition)) {
+            return false;
+        }
+        $result = $this->where($condition)
+            ->order($order)
+            ->select();
+
+        ///echo $this->getLastSql();exit;
+        return $result;
+    }
+
+    public function decStock($id, $num) {
+        return $this->where("id", "=", $id)
+            ->dec("stock", $num)
+            ->update();
+    }
+
+    public function getList($where = [], $pageSize = 10, $order = ['create_time' => 'desc']) {
+        return $this->where($where)
+            ->order($order)
+            ->paginate($pageSize);
+    }
+
 }

@@ -11,6 +11,7 @@ namespace app\common\lib\sms;
 use AlibabaCloud\Client\AlibabaCloud;
 use AlibabaCloud\Client\Exception\ClientException;
 use AlibabaCloud\Client\Exception\ServerException;
+use think\facade\Env;
 use think\facade\Log;
 
 class AliSms implements SmsBase {
@@ -27,7 +28,7 @@ class AliSms implements SmsBase {
             return false;
         }
 
-        AlibabaCloud::accessKeyClient(config("aliyun.access_key_id"), config("aliyun.access_key_secret"))
+        AlibabaCloud::accessKeyClient(Env::get('SMS.AliAccessKeyID'), Env::get('SMS.AliAccessKeySecret'))
             ->regionId(config("aliyun.region_id"))
             ->asDefaultClient();
 

@@ -22,10 +22,9 @@ class GoodsSku extends BaseModel {
         return $this->where($where)->select();
     }
 
-    //
-    // public function  incStock($id, $num) {
-    //     return $this->where("id", "=", $id)
-    //         ->inc("stock", $num)
-    //         ->update();
-    // }
+    public function incStock($id, $num) {
+        return $this->where("id", "=", $id)
+            ->inc("stock", $num)
+            ->update();
+    }
 }
