@@ -9,6 +9,7 @@
 namespace app\admin\controller;
 use app\common\business\Goods as GoodsBis;
 use app\common\lib\Status as StatusLib;
+use think\facade\View;
 
 class Goods extends AdminBase {
     public function index() {
@@ -123,5 +124,14 @@ class Goods extends AdminBase {
         } else {
             return show(config('status.error'), "状态更新失败");
         }
+    }
+
+    public function edit()
+    {
+        $id = input("param.id",0, "intval");
+        $data = (new GoodsBis())->getGoodsById($id);
+        return View::fetch("", [
+            "data" => $data,
+        ]);
     }
 }

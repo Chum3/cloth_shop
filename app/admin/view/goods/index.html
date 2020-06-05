@@ -95,7 +95,7 @@
                                    lay-filter="isIndexRecommend"
                                    lay-text="是|否"></td>
                         <td>
-                            <a class="layui-btn layui-btn-xs  edit" lay-event="edit">编辑</a>
+                            <a href="{:url('edit',['id'=> $vo.id])}" class="layui-btn layui-btn-xs  edit" lay-event="edit">编辑</a>
                             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete del-child" data-ptype="1"
                                     lay-event="delete" data-id="$id">删除
                             </a>

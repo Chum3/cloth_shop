@@ -203,4 +203,9 @@ class Goods extends BusBase
         return $result;
 
     }
+
+    public function getGoodsById($id) {
+        $data = $this->model->find($id)->toArray();
+        return $data;
+    }
 }

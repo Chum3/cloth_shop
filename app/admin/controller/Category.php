@@ -11,6 +11,10 @@ use think\facade\View;
 use app\common\business\Category as CategoryBus;
 use app\common\lib\Status as StatusLib;
 class Category extends AdminBase {
+    /**
+     * @return string
+     * @throws \Exception
+     */
     public function index() {
         $pid = input("param.pid", 0, "intval");
         $data = [
@@ -27,6 +31,10 @@ class Category extends AdminBase {
         ]);
     }
 
+    /**
+     * @return string
+     * @throws \Exception
+     */
     public function add() {
         try {
             $categorys = (new CategoryBus())->getNormalCategorys();
@@ -104,7 +112,7 @@ class Category extends AdminBase {
         }
 
         try {
-            $res = (new CategoryBus())->status($id, $status);
+            $res = (new CategoryBus())->status($id, 'status',$status);
         } catch (\Exception $e) {
             return show(config('status.errpr'), $e->getMessage());
         }

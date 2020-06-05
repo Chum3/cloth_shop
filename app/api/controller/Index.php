@@ -18,8 +18,7 @@ class Index extends ApiBase {
 
     public function cagegoryGoodsRecommend() {
         $categoryIds = [
-            106,
-            97,
+            6,7,8,9,10,11,12,13
         ];
         $result = (new GoodsBis())->categoryGoodsRecommend($categoryIds);
         return Show::success($result);

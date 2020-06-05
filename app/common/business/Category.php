@@ -7,8 +7,15 @@
  */
 
 namespace app\common\business;
+use app\common\model\mysql\BaseModel;
 use app\common\model\mysql\Category as CategoryModel;
-class Category {
+use think\db\exception\DataNotFoundException;
+use think\db\exception\DbException;
+use think\db\exception\ModelNotFoundException;
+
+class Category extends BusBase
+{
+    /** @var BaseModel */
     public $model = null;
     public function __construct() {
         $this->model = new CategoryModel();
@@ -28,6 +35,13 @@ class Category {
         }
         return $this->model->id;
     }
+
+    /**
+     * @return array|\think\Collection
+     * @throws DataNotFoundException
+     * @throws DbException
+     * @throws ModelNotFoundException
+     */
     public function getNormalCategorys() {
         $field = "id, name, pid";
         $categorys = $this->model->getNormalCategorys($field);
@@ -38,6 +52,12 @@ class Category {
         return $categorys;
     }
 
+    /**
+     * @return array|\think\Collection
+     * @throws DataNotFoundException
+     * @throws DbException
+     * @throws ModelNotFoundException
+     */
     public function getNormalAllCategorys() {
         $field = "id as category_id, name, pid";
         $categorys = $this->model->getNormalCategorys($field);
