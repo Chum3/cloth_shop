@@ -1,30 +1,30 @@
 {
-  "_readme": [
-    "This file locks the dependencies of your project to a known state",
-    "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-    "This file is @generated automatically"
-  ],
-  "content-hash": "a2fb1032ff00b2e1b33822763dc27e7b",
-  "packages": [
-    {
-      "name": "adbario/php-dot-notation",
-      "version": "2.2.0",
-      "source": {
-        "type": "git",
-        "url": "https://github.com/adbario/php-dot-notation.git",
-        "reference": "eee4fc81296531e6aafba4c2bbccfc5adab1676e"
-      },
-      "dist": {
-        "type": "zip",
-        "url": "https://api.github.com/repos/adbario/php-dot-notation/zipball/eee4fc81296531e6aafba4c2bbccfc5adab1676e",
-        "reference": "eee4fc81296531e6aafba4c2bbccfc5adab1676e",
-        "shasum": "",
-        "mirrors": [
-          {
-            "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-            "preferred": true
-          }
-        ]
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "a2fb1032ff00b2e1b33822763dc27e7b",
+    "packages": [
+        {
+            "name": "adbario/php-dot-notation",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adbario/php-dot-notation.git",
+                "reference": "eee4fc81296531e6aafba4c2bbccfc5adab1676e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adbario/php-dot-notation/zipball/eee4fc81296531e6aafba4c2bbccfc5adab1676e",
+                "reference": "eee4fc81296531e6aafba4c2bbccfc5adab1676e",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
                 "ext-json": "*",
@@ -636,23 +636,17 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.6.1",
+            "version": "1.8.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "239400de7a173fe9901b9ac7c06497751f00727a"
+                "reference": "337e3ad8e5716c15f9657bd214d16cc5e69df268"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/239400de7a173fe9901b9ac7c06497751f00727a",
-                "reference": "239400de7a173fe9901b9ac7c06497751f00727a",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/337e3ad8e5716c15f9657bd214d16cc5e69df268",
+                "reference": "337e3ad8e5716c15f9657bd214d16cc5e69df268",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0",
@@ -664,24 +658,24 @@
             },
             "require-dev": {
                 "ext-zlib": "*",
-                "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.8"
+                "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.20 || ^8.5.8 || ^9.3.10"
             },
             "suggest": {
-                "zendframework/zend-httphandlerrunner": "Emit PSR-7 responses"
+                "laminas/laminas-httphandlerrunner": "Emit PSR-7 responses"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6-dev"
+                    "dev-master": "1.7-dev"
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Psr7\\": "src/"
-                },
                 "files": [
                     "src/functions_include.php"
-                ]
+                ],
+                "psr-4": {
+                    "GuzzleHttp\\Psr7\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -689,12 +683,33 @@
             ],
             "authors": [
                 {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                },
+                {
                     "name": "Michael Dowling",
                     "email": "mtdowling@gmail.com",
                     "homepage": "https://github.com/mtdowling"
                 },
                 {
+                    "name": "George Mponos",
+                    "email": "gmponos@gmail.com",
+                    "homepage": "https://github.com/gmponos"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/Nyholm"
+                },
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com",
+                    "homepage": "https://github.com/sagikazarmark"
+                },
+                {
                     "name": "Tobias Schultze",
+                    "email": "webmaster@tubo-world.de",
                     "homepage": "https://github.com/Tobion"
                 }
             ],
@@ -709,7 +724,25 @@
                 "uri",
                 "url"
             ],
-            "time": "2019-07-01T23:21:34+00:00"
+            "support": {
+                "issues": "https://github.com/guzzle/psr7/issues",
+                "source": "https://github.com/guzzle/psr7/tree/1.8.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/Nyholm",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/guzzlehttp/psr7",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-03-20T21:51:18+00:00"
         },
         {
             "name": "league/flysystem",
@@ -1103,13 +1136,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
                 "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
@@ -1145,6 +1172,9 @@
                 "request",
                 "response"
             ],
+            "support": {
+                "source": "https://github.com/php-fig/http-message/tree/master"
+            },
             "time": "2016-08-06T14:39:51+00:00"
         },
         {
@@ -1266,13 +1296,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/120b605dfeb996808c31b6477290a714d356e822",
                 "reference": "120b605dfeb996808c31b6477290a714d356e822",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.6"
@@ -1298,6 +1322,10 @@
                 }
             ],
             "description": "A polyfill for getallheaders.",
+            "support": {
+                "issues": "https://github.com/ralouphie/getallheaders/issues",
+                "source": "https://github.com/ralouphie/getallheaders/tree/develop"
+            },
             "time": "2019-03-08T08:55:37+00:00"
         },
         {
@@ -1701,82 +1729,82 @@
                 "php": ">=7.1.0",
                 "topthink/think-template": "^2.0"
             },
-          "type": "library",
-          "autoload": {
-            "psr-4": {
-              "think\\view\\driver\\": "src"
-            }
-          },
-          "notification-url": "https://packagist.org/downloads/",
-          "license": [
-            "Apache-2.0"
-          ],
-          "authors": [
-            {
-              "name": "liu21st",
-              "email": "liu21st@gmail.com"
-            }
-          ],
-          "description": "thinkphp template driver",
-          "time": "2019-11-06T11:40:13+00:00"
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "think\\view\\driver\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "liu21st",
+                    "email": "liu21st@gmail.com"
+                }
+            ],
+            "description": "thinkphp template driver",
+            "time": "2019-11-06T11:40:13+00:00"
         },
-    {
-      "name": "wantp/snowflake",
-      "version": "v1.2.0",
-      "source": {
-        "type": "git",
-        "url": "https://github.com/wantp/snowflake.git",
-        "reference": "821c2800521cddc31afd8dd980090883abc7fe2d"
-      },
-      "dist": {
-        "type": "zip",
-        "url": "https://api.github.com/repos/wantp/snowflake/zipball/821c2800521cddc31afd8dd980090883abc7fe2d",
-        "reference": "821c2800521cddc31afd8dd980090883abc7fe2d",
-        "shasum": "",
-        "mirrors": [
-          {
-            "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-            "preferred": true
-          }
-        ]
-      },
-      "require": {
-        "php": ">=7.0.0"
-      },
-      "type": "library",
-      "autoload": {
-        "psr-4": {
-          "wantp\\Snowflake\\": "src/Snowflake/"
-        }
-      },
-      "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
-      "authors": [
         {
-          "name": "zhangrongwang",
-          "email": "zhangrongwang798@gmail.com"
+            "name": "wantp/snowflake",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wantp/snowflake.git",
+                "reference": "821c2800521cddc31afd8dd980090883abc7fe2d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wantp/snowflake/zipball/821c2800521cddc31afd8dd980090883abc7fe2d",
+                "reference": "821c2800521cddc31afd8dd980090883abc7fe2d",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "wantp\\Snowflake\\": "src/Snowflake/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "zhangrongwang",
+                    "email": "zhangrongwang798@gmail.com"
+                }
+            ],
+            "description": "A package for create unique id by snowflake",
+            "keywords": [
+                "snowflake",
+                "uniqueId"
+            ],
+            "time": "2019-08-05T07:14:56+00:00"
         }
-      ],
-      "description": "A package for create unique id by snowflake",
-      "keywords": [
-        "snowflake",
-        "uniqueId"
-      ],
-      "time": "2019-08-05T07:14:56+00:00"
-    }
-  ],
-  "packages-dev": [
-    {
-      "name": "symfony/polyfill-php72",
-      "version": "v1.14.0",
-      "source": {
-        "type": "git",
-        "url": "https://github.com/symfony/polyfill-php72.git",
-        "reference": "46ecacf4751dd0dc81e4f6bf01dbf9da1dc1dadf"
-      },
-      "dist": {
+    ],
+    "packages-dev": [
+        {
+            "name": "symfony/polyfill-php72",
+            "version": "v1.14.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php72.git",
+                "reference": "46ecacf4751dd0dc81e4f6bf01dbf9da1dc1dadf"
+            },
+            "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/46ecacf4751dd0dc81e4f6bf01dbf9da1dc1dadf",
                 "reference": "46ecacf4751dd0dc81e4f6bf01dbf9da1dc1dadf",
@@ -1971,8 +1999,9 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-      "php": ">=7.1.0",
-      "ext-json": "*"
+        "php": ">=7.1.0",
+        "ext-json": "*"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.2.0"
 }
